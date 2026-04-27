@@ -1,0 +1,20 @@
+[package]
+name = "netwatch"
+version = "0.1.0"
+edition = "2024"
+description = "Linux network connection viewer with GeoIP geolocation"
+
+[dependencies]
+netstat2 = "0.11"
+maxminddb = { version = "0.27", features = ["mmap"] }
+dns-lookup = "2"
+comfy-table = "7"
+clap = { version = "4", features = ["derive"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+ratatui = "0.29"
+crossterm = "0.28"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
